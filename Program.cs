@@ -7,8 +7,17 @@ using System.Collections.Generic;
 
 
 // Inserimento dati
-Console.Write("Inserisci il nome del tuo programma Eventi: ");
-string? nomeProgramma = Console.ReadLine();
+
+string nomeProgramma = "";
+while (string.IsNullOrEmpty(nomeProgramma))
+{
+    Console.Write("Inserisci il nome del tuo programma Eventi: ");
+    nomeProgramma = Console.ReadLine();
+    if (string.IsNullOrEmpty(nomeProgramma))
+    {
+        Console.WriteLine("Il nome del programma non può essere vuoto. Inserisci nuovamente.");
+    }
+}
 
 ProgrammaEventi programma = new ProgrammaEventi(nomeProgramma);
 
@@ -26,7 +35,7 @@ while (numEventi <= 0)
 for (int i = 0; i < numEventi; i++)
 {
     Console.Write("Inserisci il nome del " + (i + 1) + "° evento: ");
-    string? nomeEvento = Console.ReadLine();
+    string nomeEvento = Console.ReadLine();
 
     Console.Write("Inserisci la data dell'evento (gg/mm/yyyy): ");
     DateTime dataEvento = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
@@ -39,7 +48,6 @@ for (int i = 0; i < numEventi; i++)
 
 
     programma.AggiungiEvento(evento);
-
 }
 
 // Stampa il numero di eventi presenti nel programma
