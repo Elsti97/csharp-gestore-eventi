@@ -6,7 +6,7 @@ using System.Globalization;
 
 // Dati dell'evento
 Console.Write("Inserisci il nome dell'evento: ");
-string titolo = Console.ReadLine();
+string? titolo = Console.ReadLine();
 Console.Write("Inserisci la data dell'evento (formato dd/MM/yyyy): ");
 DateTime data = DateTime.Parse(Console.ReadLine());
 Console.Write("Inserisci il numero di posti totali: ");
@@ -33,7 +33,7 @@ while (continuaPrenotazioni)
     }
 
     Console.Write("Vuoi prenotare altri posti (si/no)? ");
-    string risposta = Console.ReadLine();
+    string? risposta = Console.ReadLine();
     continuaPrenotazioni = risposta is "si";
 }
 
@@ -42,7 +42,7 @@ bool continuaDisdette = true;
 while (continuaDisdette)
 {
     Console.Write("Vuoi disdire dei posti (si/no)? ");
-    string risposta = Console.ReadLine();
+    string? risposta = Console.ReadLine();
     if (risposta is "si")
     {
         Console.Write("Indica il numero di posti da disdire: ");

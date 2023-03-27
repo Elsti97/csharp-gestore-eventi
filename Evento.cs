@@ -61,7 +61,7 @@ class Evento
     }
 
 
-    // COSTRUTTORE
+    // Costruttore
     public Evento(string titolo, DateTime data, int capienza)
     {
         Titolo = titolo;
