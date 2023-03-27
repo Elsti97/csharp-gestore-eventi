@@ -70,6 +70,8 @@ class Evento
         Prenotazioni = 0;
     }
 
+
+    // Metodo prenotazione
     public void PrenotaPosti(int postiDaPrenotare)
     {
         if (DateTime.Now >= Data)
@@ -88,6 +90,8 @@ class Evento
         Prenotazioni += postiDaPrenotare;
     }
 
+
+    // Metodo per disdire
     public void DisdiciPosti(int postiDaDisdire)
     {
         if (DateTime.Now >= Data)
@@ -101,6 +105,7 @@ class Evento
         Prenotazioni -= postiDaDisdire;
     }
 
+    //override per restituire stringa data e titolo
     public override string ToString()
     {
         return $"{Data.ToString("dd/MM/yyyy")} - {Titolo}";
