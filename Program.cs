@@ -18,7 +18,7 @@ int numEventi = int.Parse(Console.ReadLine());
 // Ciclo per tutti gli eventi
 for (int i = 0; i < numEventi; i++)
 {
-    Console.Write("Inserisci il nome del {i + 1}° evento: ");
+    Console.Write("Inserisci il nome del " + (i + 1) + "° evento: ");
     string nomeEvento = Console.ReadLine();
 
     Console.Write("Inserisci la data dell'evento (gg/mm/yyyy): ");
@@ -54,6 +54,10 @@ else
 {
     Console.WriteLine(ProgrammaEventi.StampaEventi(eventiInData));
 }
+
+programma.SvuotaEventi();
+Console.WriteLine("Eventi eliminati");
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
