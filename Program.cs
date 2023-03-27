@@ -8,18 +8,25 @@ using System.Collections.Generic;
 
 // Inserimento dati
 Console.Write("Inserisci il nome del tuo programma Eventi: ");
-string nomeProgramma = Console.ReadLine();
+string? nomeProgramma = Console.ReadLine();
 
 ProgrammaEventi programma = new ProgrammaEventi(nomeProgramma);
 
-Console.Write("Indica il numero di eventi da inserire: ");
-int numEventi = int.Parse(Console.ReadLine());
+int numEventi = 0;
+while (numEventi <= 0)
+{
+    Console.Write("Indica il numero di eventi da inserire: ");
+    if (!int.TryParse(Console.ReadLine(), out numEventi) || numEventi <= 0)
+    {
+        Console.WriteLine("Inserire un numero intero positivo.");
+    }
+}
 
 // Ciclo per tutti gli eventi
 for (int i = 0; i < numEventi; i++)
 {
     Console.Write("Inserisci il nome del " + (i + 1) + "° evento: ");
-    string nomeEvento = Console.ReadLine();
+    string? nomeEvento = Console.ReadLine();
 
     Console.Write("Inserisci la data dell'evento (gg/mm/yyyy): ");
     DateTime dataEvento = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
@@ -55,8 +62,42 @@ else
     Console.WriteLine(ProgrammaEventi.StampaEventi(eventiInData));
 }
 
-programma.SvuotaEventi();
-Console.WriteLine("Eventi eliminati");
+//programma.SvuotaEventi();
+//Console.WriteLine("Eventi eliminati");
+
+
+// BONUS
+Console.WriteLine("---- BONUS ----");
+Console.WriteLine();
+Console.WriteLine("Aggiungiamo anche una conferenza!");
+
+// Chiedi all'utente di inserire i dati della conferenza
+Console.Write("Inserisci il nome della conferenza: ");
+string titolo = Console.ReadLine();
+
+Console.Write("Inserisci la data della conferenza (formato dd/mm/yyyy): ");
+DateTime data = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+
+Console.Write("Inserisci il numero di posti per la conferenza: ");
+int capienza = int.Parse(Console.ReadLine());
+
+Console.Write("Inserisci il relatore della conferenza: ");
+string relatore = Console.ReadLine();
+
+Console.Write("Inserisci il prezzo del biglietto della conferenza: ");
+double prezzo = double.Parse(Console.ReadLine());
+
+// Crea un oggetto Conferenza con i dati inseriti dall'utente
+Conferenza conferenza = new Conferenza(titolo, data, capienza, relatore, prezzo);
+
+// Aggiungi la conferenza alla lista degli eventi
+programma.AggiungiEvento(conferenza);
+Console.WriteLine();
+
+// Stampa la lista degli eventi
+Console.WriteLine("Ecco il tuo programma eventi con anche le Conferenze: ");
+Console.WriteLine(programma);
+
 
 
 

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 class Evento
 {
-    public string titolo;
+    public string? titolo;
     public DateTime data;
     private int capienza;
     private int prenotazioni;
 
 
     // Vari Get/Set
-    public string Titolo
+    public string? Titolo
     {
         get { return titolo; }
         set
@@ -105,7 +105,7 @@ class Evento
         Prenotazioni -= postiDaDisdire;
     }
 
-    //override per restituire stringa data e titolo
+    // Override per restituire stringa data e titolo
     public override string ToString()
     {
         return $"{Data.ToString("dd/MM/yyyy")} - {Titolo}";

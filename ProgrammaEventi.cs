@@ -59,15 +59,24 @@ class ProgrammaEventi
         eventi.Clear();
     }
 
+
+    // Override di eventi e conferenze
     public override string ToString()
     {
         string output = Titolo + "\n";
 
         foreach (Evento evento in eventi)
         {
-            output += evento.Data.ToString("dd/MM/yyyy") + "-" + evento.Titolo + "\n";
+            if (evento is Conferenza)
+            {
+                Conferenza conferenza = (Conferenza)evento;
+                output += evento.Data.ToString("dd/MM/yyyy") + "-" + evento.Titolo + " - " + conferenza.Relatore + " - " + conferenza.PrezzoFormattato() + "\n";
+            }
+            else
+            {
+                output += evento.Data.ToString("dd/MM/yyyy") + "-" + evento.Titolo + "\n";
+            }
         }
-
         return output;
     }
 }
