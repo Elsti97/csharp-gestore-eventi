@@ -40,7 +40,7 @@ class ProgrammaEventi
         string output = "";
         foreach (Evento evento in eventi)
         {
-            output += evento.Data.ToString("dd/MM/yyyy") + " - " + evento.Titolo;
+            output += evento.Data.ToString("dd/MM/yyyy") + " - " + evento.Titolo + "\n";
         }
         return output;
     }
@@ -61,8 +61,13 @@ class ProgrammaEventi
 
     public override string ToString()
     {
-        string output = $"Nome programma evento: {Titolo}";
-        output += StampaEventi(eventi);
+        string output = Titolo + "\n";
+
+        foreach (Evento evento in eventi)
+        {
+            output += evento.Data.ToString("dd/MM/yyyy") + "-" + evento.Titolo + "\n";
+        }
+
         return output;
     }
 }
